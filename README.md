@@ -8,8 +8,10 @@ If you want to user.
 4. Dowload mysql server.
 5. Dowload mysql-connector-java-8.0.19.jar
 6. add  module.xml and mysql connector wildfly-21.0.1.Final\modules\system\layers\base\com\mysql\main\
-Module.xml
-8. <?xml version="1.0" encoding="UTF-8"?>
+# Module.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
 
 <module xmlns="urn:jboss:module:1.5" name="com.mysql">
     <resources>
@@ -20,5 +22,6 @@ Module.xml
         <module name="javax.transaction.api"/>
     </dependencies>
 </module>
+```
 
-9. Now you can start application.
+7. Now you can start application.
