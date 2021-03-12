@@ -4,7 +4,7 @@ This is just a simple SPRING-BOOT, JSF, PRIMEFACES project.
 If you want to user. 
 1. Dowload WILDFLY 21 
 2. Add wildfly-21.0.1.Final\standalone\configuration\app-config\pixelhunting\mysql-database-configuration.properties 
-3. ![image](https://user-images.githubusercontent.com/45422159/110942563-3e35ff00-833a-11eb-91e3-a67ab1668771.png)
+![image](https://user-images.githubusercontent.com/45422159/110942563-3e35ff00-833a-11eb-91e3-a67ab1668771.png)
 4. Dowload mysql server.
 5. Dowload mysql-connector-java-8.0.19.jar
 6. add  module.xml and mysql connector wildfly-21.0.1.Final\modules\system\layers\base\com\mysql\main\
