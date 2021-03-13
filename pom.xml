@@ -236,7 +236,6 @@
 		<module>pixel-hunting-repository</module>
 		<module>pixel-hunting-controller</module>
 		<module>pixel-hunting-client-api</module>
-		<module>pixel-hunting-webapp</module>
 	</modules>
 
 </project>

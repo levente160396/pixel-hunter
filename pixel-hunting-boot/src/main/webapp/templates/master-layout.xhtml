@@ -15,8 +15,7 @@
 		integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
 		crossorigin="anonymous" />
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	<link rel="shortcut icon"
-		href="#{request.contextPath}/images/favicon.ico" type="image/png" />
+		<link rel="icon" type="image/png" href="#{request.contextPath}/images/favicon.ico" />
 	<h:outputScript library="primefaces" name="jquery/jquery.js"
 		target="head" />
 	<script type="text/javascript"
@@ -37,14 +36,6 @@
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml" />
 	</ui:insert>
-
-	<p:ajaxStatus onstart="PF('statusDialog').show()"
-		onsuccess="PF('statusDialog').hide()" />
-	<p:dialog styleClass="ajax-loader-dialog" widgetVar="statusDialog"
-		draggable="false" closable="false" resizable="false"
-		showHeader="false">
-		<p:graphicImage name="/images/ajax-loader.svg" />
-	</p:dialog>
 </h:body>
 <script type="text/javascript">    
 PrimeFaces.locales['hu']= {
