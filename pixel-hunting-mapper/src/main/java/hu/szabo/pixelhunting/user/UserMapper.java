@@ -17,4 +17,10 @@ public interface UserMapper {
 	User userSaveVOToUser(UserSaveVO userSaveVO);
 
 	UserSaveVO userToUserSaveVO(User user);
+	
+	User saveUserRequestToUser(SaveUserRequest request);
+	
+	UserResponse userToSaveUserResponse(User user);
+	
+	List<UserResponse> usersToUserResponse(List<User> users);
 }

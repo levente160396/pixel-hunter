@@ -5,6 +5,8 @@ import java.util.List;
 public interface UserService {
 
 	List<UserDisplayVO> findAllUsers();
+	
+	List<UserResponse> findAllUser();
 
 	void saveUser(UserSaveVO userSaveVO);
 
@@ -17,4 +19,10 @@ public interface UserService {
 	Boolean checkOldPassword(String oldPassword, Long currentUserId);
 
 	void saveNewPassword(String firstNewPassword, Long id);
+
+	UserResponse saveUser(SaveUserRequest request);
+
+	boolean isUsernameExist(String username);
+
+	boolean isEmailExist(String email);
 }

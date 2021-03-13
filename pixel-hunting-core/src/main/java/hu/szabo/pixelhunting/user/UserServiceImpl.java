@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,17 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return UserMapper.INSTANCE.usersToUserDisplayVos(users);
+	}
+	
+	@Override
+	public List<UserResponse> findAllUser() {
+		List<User> users = userRepository.findAll();
+		
+		if (CollectionUtils.isEmpty(users)) {
+			Collections.emptyList();
+		}
+		
+		return UserMapper.INSTANCE.usersToUserResponse(users);
 	}
 
 	@Override
@@ -103,5 +115,23 @@ public class UserServiceImpl implements UserService {
 		findUserById.get().setPassword(new BCryptPasswordEncoder().encode(firstNewPassword));
 		findUserById.get().setLastLogin(new Date());
 		userRepository.save(findUserById.get());
+	}
+
+	@Override
+	public UserResponse saveUser(SaveUserRequest request) {
+		
+		return UserMapper.INSTANCE.userToSaveUserResponse(userRepository.save(UserMapper.INSTANCE.saveUserRequestToUser(request)));
+	}
+
+	@Override
+	public boolean isUsernameExist(String username) {
+		
+		return !StringUtils.isEmpty(userRepository.findByUsername(username));
+	}
+
+	@Override
+	public boolean isEmailExist(String email) {
+		
+		return null != userRepository.findUserByEmail(email);
 	}
 }

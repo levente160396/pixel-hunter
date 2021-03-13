@@ -18,6 +18,12 @@
 			<artifactId>pixel-hunting-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>hu.szabo</groupId>
+			<artifactId>pixel-hunting-client-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 	</dependencies>
 

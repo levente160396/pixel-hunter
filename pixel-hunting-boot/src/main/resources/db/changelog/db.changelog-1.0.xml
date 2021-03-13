@@ -39,4 +39,47 @@
 
 		</sql>
 	</changeSet>
+	<changeSet id="2" author="szabol">
+		<sql>
+
+    create table team (
+       id bigint not null auto_increment,
+        description varchar(255) not null,
+        mod_date datetime,
+        name varchar(255) not null,
+        rec_date datetime,
+        rec_user_id varchar(255),
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table team_member (
+       id bigint not null auto_increment,
+        mod_date datetime,
+        mod_user_id varchar(255),
+        rec_date datetime,
+        rec_user_id varchar(255),
+        team_member_type varchar(255) not null,
+        team_fk bigint,
+        user_fk bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    alter table team 
+       add constraint UK_1s1a5xfgscux09k2ae1l9tnal unique (description);
+
+    alter table team 
+       add constraint UK_g2l9qqsoeuynt4r5ofdt1x2td unique (name);
+
+    alter table team_member 
+       add constraint FKpg38aouo45t0f6eyyf8j3o9so 
+       foreign key (team_fk) 
+       references team (id);
+
+    alter table team_member 
+       add constraint FKqyemmwu20qaiq7gtsscgv4k8e 
+       foreign key (user_fk) 
+       references user (id);
+
+	</sql>
+	</changeSet>
 </databaseChangeLog>
