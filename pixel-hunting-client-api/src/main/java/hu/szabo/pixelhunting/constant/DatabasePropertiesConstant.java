@@ -2,8 +2,6 @@ package hu.szabo.pixelhunting.constant;
 
 public class DatabasePropertiesConstant {
 
-	public static final String ORACLE_DATABASE_CONFIGURATION = "oracle-database-configuration.properties";
-
 	public static final String MYSQL_DATABASE_CONFIGURATION = "mysql-database-configuration.properties";
 
 	public static final String MODE = "mode";

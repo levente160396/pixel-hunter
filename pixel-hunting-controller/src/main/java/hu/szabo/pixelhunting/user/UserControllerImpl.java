@@ -1,19 +1,20 @@
-package hu.szabo.pixelhunting.server;
+package hu.szabo.pixelhunting.user;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import hu.szabo.pixelhunting.user.SaveUserRequest;
-import hu.szabo.pixelhunting.user.UserResponse;
-import hu.szabo.pixelhunting.user.UserRestController;
-import hu.szabo.pixelhunting.user.UserService;
 
 @RestController
 public class UserControllerImpl implements UserRestController {
@@ -27,7 +28,7 @@ public class UserControllerImpl implements UserRestController {
 	public ResponseEntity<List<UserResponse>> getAllUsers() {
 		LOGGER.debug("BEGIN getAllUsers: {}");
 		
-		List<UserResponse> userResponse = new ArrayList<>();
+		List<UserResponse> userResponse = new LinkedList<>();
 		try {
 			
 			userResponse = userservice.findAllUser();
@@ -68,5 +69,18 @@ public class UserControllerImpl implements UserRestController {
 
 		LOGGER.debug("END saveUser, response: {}", response);
 		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public static Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+
+		return errors;
 	}
 }

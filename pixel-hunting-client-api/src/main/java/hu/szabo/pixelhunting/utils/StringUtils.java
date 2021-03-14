@@ -6,9 +6,9 @@ package hu.szabo.pixelhunting.utils;
  *
  */
 
-public class MonitoringStringUtils {
+public class StringUtils {
 
-	private MonitoringStringUtils() {
+	private StringUtils() {
 	}
 
 	public static String insertString(String originalString, String stringToBeInserted, int index) {

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Scope;
 
 import hu.szabo.pixelhunting.user.UserService;
 import hu.szabo.pixelhunting.utils.CommonMessageUtils;
-import hu.szabo.pixelhunting.utils.MonitoringStringUtils;
+import hu.szabo.pixelhunting.utils.StringUtils;
 import lombok.Data;
 
 /**
@@ -74,7 +74,7 @@ public class ChangePasswordBean implements Serializable {
 			return Boolean.FALSE;
 		}
 
-		if (!MonitoringStringUtils.checkPassword(firstNewPassword)) {
+		if (!StringUtils.checkPassword(firstNewPassword)) {
 			CommonMessageUtils.addFacesMessage(FacesMessage.SEVERITY_ERROR,
 					CommonMessageUtils.RB.getString("checkpassword.new.password.uppercase.digits"));
 			return Boolean.FALSE;

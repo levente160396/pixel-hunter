@@ -27,22 +27,23 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(unique = true, nullable = false, name = "USERNAME")
+	@Column(unique = true, nullable = false, name = "USERNAME", length = 100)
 	private String username;
 
-	@Size(min = 1, max = 50)
-	@Column(name = "FIRST_NAME")
+	@Size(min = 3, max = 100)
+	@Column(name = "FIRST_NAME", length = 50)
 	private String firstName;
 
-	@Size(min = 1, max = 50)
-	@Column(name = "LAST_NAME")
+	@Size(min = 3, max = 100)
+	@Column(name = "LAST_NAME", length = 50)
 	private String lastName;
 
-	@Size(min = 1, max = 50)
-	@Column(name = "EMAIL", unique = true, nullable = false)
+	@Size(min = 3, max = 100)
+	@Column(name = "EMAIL", unique = true, nullable = false, length = 100)
 	private String email;
 
-	@Column(name = "PASSWORD")
+	@Size(min = 3)
+	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
 	@Column(name = "IS_ACTIVE")
