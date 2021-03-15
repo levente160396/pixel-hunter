@@ -21,7 +21,7 @@ public class TeamRequest implements Serializable{
 	@Size(max = 500)
 	private String description;
 	
-	private String recUserId;
+	private Long recUserId;
 	
 
 }

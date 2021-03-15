@@ -1,7 +1,6 @@
 package hu.szabo.pixelhunting.team;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import hu.szabo.pixelhunting.utils.BaseResponse;
 import lombok.AllArgsConstructor;
@@ -13,23 +12,19 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeamResponse extends BaseResponse implements Serializable {
+public class TeamMemberResponse extends BaseResponse implements Serializable {
 
-	private static final long serialVersionUID = 5358095748564222665L;
+	private static final long serialVersionUID = -5392797708941962867L;
 	
 	private Long id;
 	
-	private String name;
+	private TeamMemberType teamMemberType;
 	
-	private Long recUserId;
+	private Long userId;
 	
-	private String description;
+	private Long teamId;
 	
-	private Date recDate;
-	
-	private Date modDate;
-
-	public TeamResponse(boolean success, String errorMessage) {
+	public TeamMemberResponse(boolean success, String errorMessage) {
 		super(success, errorMessage);
 	}
 }

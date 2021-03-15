@@ -1,5 +1,7 @@
 package hu.szabo.pixelhunting.team;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,28 +31,28 @@ public class Team {
 	private String name;
 	
 	@Column(name="REC_USER_ID",nullable=true)
-	protected String recUserId;
+	private Long recUserId;
 	
 	@Size(max = 500)
-	@Column(nullable = false, name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION")
 	private String description;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="REC_DATE",nullable=true)
-	private java.util.Date recDate;
+	private Date recDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)	
 	@Column(name="MOD_DATE",nullable=true)
-	protected java.util.Date modDate;
+	private Date modDate;
 	
 	@PrePersist
-	protected void onCreate() {
+	private void onCreate() {
 		recDate = new java.util.Date();
 		modDate = recDate;
 	}
 	
 	@PreUpdate
-	protected void onUpdate() {
+	private void onUpdate() {
 		modDate = new java.util.Date();
 	}
 }

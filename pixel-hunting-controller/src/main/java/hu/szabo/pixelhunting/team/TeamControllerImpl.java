@@ -60,6 +60,7 @@ public class TeamControllerImpl implements TeamRestController {
 		} catch (Exception e) {
 			String errorMessage = "Faild to save team!";
 			LOGGER.error(errorMessage, e);
+			return new ResponseEntity<>(new TeamResponse(Boolean.FALSE, errorMessage + e), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		LOGGER.debug("END saveTeam, response: {}", response);

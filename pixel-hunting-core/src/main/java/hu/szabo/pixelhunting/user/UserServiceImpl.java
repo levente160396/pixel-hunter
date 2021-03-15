@@ -119,7 +119,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserResponse saveUser(SaveUserRequest request) {
-		
 		return UserMapper.INSTANCE.userToSaveUserResponse(userRepository.save(UserMapper.INSTANCE.saveUserRequestToUser(request)));
 	}
 

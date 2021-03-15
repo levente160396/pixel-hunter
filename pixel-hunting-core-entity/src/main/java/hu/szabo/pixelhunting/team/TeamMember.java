@@ -1,5 +1,7 @@
 package hu.szabo.pixelhunting.team;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -31,30 +33,24 @@ public class TeamMember {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "TEAM_MEMBER_TYPE", nullable = false)
 	private TeamMemberType teamMemberType;
-	
-	@Column(name="REC_USER_ID",nullable=true)
-	protected String recUserId;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="REC_DATE",nullable=true)
-	protected java.util.Date recDate;
-	
-	@Column(name="MOD_USER_ID",nullable=true)
-	protected String modUserId;
+	private Date recDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)	
 	@Column(name="MOD_DATE",nullable=true)
-	protected java.util.Date modDate;
+	private Date modDate;
 	
 	@PrePersist
-	protected void onCreate() {
-		recDate = new java.util.Date();
+	private void onCreate() {
+		recDate = new Date();
 		modDate = recDate;
 	}
 
 	@PreUpdate
-	protected void onUpdate() {
-		modDate = new java.util.Date();
+	private void onUpdate() {
+		modDate = new Date();
 	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)

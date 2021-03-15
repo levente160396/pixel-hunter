@@ -35,7 +35,9 @@ public class UserControllerImpl implements UserRestController {
 			
 		} catch (Exception e) {
 			String errorMessage = "Faild to getAllUsers!";
+			userResponse.add(new UserResponse(Boolean.FALSE, errorMessage));
 			LOGGER.error(errorMessage, e);
+			return new ResponseEntity<>(userResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		LOGGER.debug("END getAllUsers, response: {}", userResponse);
@@ -52,19 +54,16 @@ public class UserControllerImpl implements UserRestController {
 			return new ResponseEntity<>(new UserResponse(Boolean.FALSE, errorMessage), HttpStatus.BAD_REQUEST);
 		}
 		
-		if(userservice.isEmailExist(request.getEmail()) || userservice.isUsernameExist(request.getUsername())) {
-			String errorMessage = "Email or username are not unique!";
-			LOGGER.error(errorMessage);
-			return new ResponseEntity<>(new UserResponse(Boolean.FALSE, errorMessage), HttpStatus.BAD_REQUEST);
-		}
-		
-		UserResponse response = new UserResponse();
+		UserResponse response = null;
 		
 		try {
+			
 			response = userservice.saveUser(request);
+
 		}catch (Exception e) {
 			String errorMessage = "Faild to save User!";
 			LOGGER.error(errorMessage, e);
+			return new ResponseEntity<>(new UserResponse(Boolean.FALSE, errorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		LOGGER.debug("END saveUser, response: {}", response);
